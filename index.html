@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIDERANÇA AGENCY - Urban Graffiti Style</title>
+    <title>LIDERANÇA AGENCY - Especialistas em Crescimento</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --pure-black: #0a0a0a;
-            --street-red: #E8000D;
-            --pure-white: #FFFFFF;
-            --card-dark: #111111;
+            --bg-deep: #0a0a0f;
+            --card-bg: #111118;
+            --purple-main: #8B5CF6;
+            --pink-main: #EC4899;
+            --purple-soft: #A78BFA;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --grad-primary: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            --glow-soft: rgba(139, 92, 246, 0.3);
+            --check-green: #22C55E;
         }
 
         * {
@@ -25,168 +31,188 @@
         }
 
         body {
-            background-color: var(--pure-black);
-            color: var(--pure-white);
+            background-color: var(--bg-deep);
+            color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            line-height: 1.3;
+            line-height: 1.5;
             overflow-x: hidden;
             min-height: 100vh;
+            position: relative;
+        }
+
+        /* Subtle Center Glow */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, rgba(10, 10, 15, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 0 15px 80px;
+            padding: 0 20px 60px;
         }
 
-        /* Logo - Sticker Effect */
+        /* Header & Logo */
         header {
             text-align: center;
-            padding: 50px 10px 30px;
+            padding: 60px 20px 30px;
         }
 
         .logo {
-            font-family: 'Boogaloo', cursive;
-            font-size: 4rem;
-            color: var(--pure-white);
-            text-transform: uppercase;
-            letter-spacing: -1px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            font-size: 3.5rem;
+            letter-spacing: 2px;
+            background: var(--grad-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             display: inline-block;
-            /* Sticker Outline Effect */
-            text-shadow: 
-                -3px -3px 0 var(--street-red), 
-                 3px -3px 0 var(--street-red), 
-                -3px  3px 0 var(--street-red), 
-                 3px  3px 0 var(--street-red),
-                -5px -5px 0 var(--pure-black),
-                 5px  5px 0 var(--pure-black);
+            text-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
+            line-height: 1;
         }
 
         @media (min-width: 768px) {
-            .logo { font-size: 6.5rem; }
+            .logo { font-size: 5.5rem; }
         }
 
-        /* Tabs Style - Chunky Buttons */
+        .divider {
+            height: 1px;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+            margin: 20px 0 40px;
+        }
+
+        /* Tabs Styling */
         .tabs-container {
             display: flex;
-            gap: 12px;
-            margin-bottom: 40px;
+            gap: 10px;
+            margin-bottom: 35px;
         }
 
         .tab-btn {
             flex: 1;
-            font-family: 'Boogaloo', cursive;
-            font-size: 1.2rem;
-            text-transform: uppercase;
+            background: #1a1a2a;
+            border: 1px solid #2a2a3a;
+            color: var(--text-muted);
+            padding: 14px 10px;
+            border-radius: 12px;
             cursor: pointer;
-            padding: 15px 5px;
-            background: var(--pure-black);
-            color: rgba(255, 255, 255, 0.6);
-            border: 1.5px solid var(--pure-white);
-            border-radius: 8px;
-            transition: 0.2s;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
         }
 
         .tab-btn.active {
-            background: var(--street-red);
-            color: var(--pure-white);
-            border: 3px solid var(--pure-white);
-            opacity: 1;
-            transform: rotate(-2deg);
+            background: var(--grad-primary);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
         }
 
-        /* Tab Content */
+        /* Content Sections */
         .tab-content {
             display: none;
-            animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideUp 0.4s ease-out forwards;
         }
 
         .tab-content.active {
             display: block;
         }
 
-        @keyframes popIn {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Package Grid - High Contrast */
+        /* Grid */
         .package-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .plan-header {
             grid-column: span 2;
-            font-family: 'Boogaloo', cursive;
-            font-size: 1.4rem;
-            color: var(--pure-white);
-            text-transform: uppercase;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: var(--purple-soft);
+            letter-spacing: 3px;
             margin: 20px 0 10px;
-            border-left: 5px solid var(--street-red);
-            padding-left: 12px;
+            text-transform: uppercase;
         }
 
+        /* Card Design */
         .card {
-            background: var(--card-dark);
-            border: 2.5px solid var(--pure-white);
-            padding: 25px 10px;
+            background: var(--card-bg);
+            border-radius: 18px;
+            padding: 25px 15px;
             text-align: center;
             cursor: pointer;
-            transition: 0.2s;
-            border-radius: 4px;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1.5px solid transparent;
+            background-image: linear-gradient(var(--card-bg), var(--card-bg)), var(--grad-primary);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
 
         .card:hover {
-            border-color: var(--street-red);
-            box-shadow: 0 0 20px rgba(232, 0, 13, 0.4);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--glow-soft);
         }
 
         .card.selected {
-            border-color: var(--street-red);
-            background: #000;
-            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
+            transform: scale(1.02);
         }
 
         .card .qty {
             display: block;
-            font-family: 'Boogaloo', cursive;
-            font-size: 2.8rem;
-            color: var(--street-red);
-            line-height: 1;
-            margin-bottom: 8px;
-            /* White Outline Effect */
-            text-shadow: 
-                -2px -2px 0 var(--pure-white), 
-                 2px -2px 0 var(--pure-white), 
-                -2px  2px 0 var(--pure-white), 
-                 2px  2px 0 var(--pure-white);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: var(--grad-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            margin-bottom: 5px;
         }
 
         .card .label {
             display: block;
-            font-size: 0.8rem;
-            color: var(--pure-white);
-            text-transform: lowercase;
-            margin-bottom: 12px;
-            font-weight: 400;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 15px;
         }
 
         .card .price {
             display: block;
-            font-weight: 900;
-            font-size: 1.5rem;
-            color: var(--pure-white);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #ffffff;
         }
 
-        /* Form - Raw Style */
+        /* Order Form */
         #order-form-container {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease-out;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         #order-form-container.visible {
@@ -194,20 +220,18 @@
             margin-top: 40px;
         }
 
-        .form-raw {
-            border: 3px solid var(--pure-white);
-            padding: 30px 20px;
-            background: var(--pure-black);
-            border-radius: 4px;
+        .form-premium {
+            background: #111118;
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid #2a2a3a;
         }
 
-        .form-raw h2 {
-            font-family: 'Boogaloo', cursive;
+        .form-premium h2 {
+            font-family: 'Montserrat', sans-serif;
             text-align: center;
-            font-size: 2.2rem;
-            color: var(--pure-white);
             margin-bottom: 25px;
-            text-transform: uppercase;
+            font-size: 1.3rem;
         }
 
         .input-group {
@@ -218,53 +242,51 @@
             display: block;
             margin-bottom: 8px;
             font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--pure-white);
-            text-transform: uppercase;
+            color: var(--text-muted);
         }
 
         .input-group input {
             width: 100%;
-            background: var(--pure-black);
-            border: 2px solid var(--pure-white);
-            padding: 15px;
-            border-radius: 0;
-            color: var(--pure-white);
-            font-size: 1.1rem;
-            outline: none;
+            background: #0a0a0f;
+            border: 1px solid #2a2a3a;
+            padding: 16px;
+            border-radius: 12px;
+            color: white;
             font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
         }
 
         .input-group input:focus {
-            border-color: var(--street-red);
+            border-color: var(--pink-main);
         }
 
         .btn-whatsapp {
             width: 100%;
-            background: var(--street-red);
-            color: var(--pure-white);
-            border: 2px solid var(--pure-white);
+            background: var(--grad-primary);
+            color: white;
+            border: none;
             padding: 20px;
-            font-family: 'Boogaloo', cursive;
-            font-size: 1.5rem;
-            text-transform: uppercase;
+            border-radius: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
             cursor: pointer;
-            transition: 0.2s;
-            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+            transition: transform 0.2s;
         }
 
-        .btn-whatsapp:hover {
-            box-shadow: 0 0 20px var(--street-red);
-            transform: scale(1.02);
-        }
-
-        /* Trust Badges - Row */
+        /* Trust Badges - Minimal Version */
         .trust-row {
             display: flex;
             justify-content: center;
             gap: 25px;
-            margin-top: 60px;
+            margin-top: 50px;
             flex-wrap: wrap;
+            padding: 10px;
         }
 
         .badge-item {
@@ -272,20 +294,24 @@
             align-items: center;
             gap: 8px;
             font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--pure-white);
-            text-transform: uppercase;
+            font-weight: 500;
+            color: #ffffff;
+            background: none;
+            border: none;
+            box-shadow: none;
+            padding: 0;
         }
 
         .badge-item span {
-            color: var(--street-red);
-            font-size: 1.4rem;
+            color: var(--check-green);
+            font-size: 1.1rem;
+            font-weight: bold;
         }
 
         @media (max-width: 480px) {
-            .package-grid { grid-template-columns: 1fr; }
-            .trust-row { flex-direction: column; align-items: center; gap: 15px; }
-            .logo { font-size: 3.5rem; }
+            .card .qty { font-size: 1.5rem; }
+            .card .price { font-size: 1.1rem; }
+            .trust-row { gap: 15px; flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -294,6 +320,7 @@
     <div class="container">
         <header>
             <div class="logo">LIDERANÇA AGENCY</div>
+            <div class="divider"></div>
         </header>
 
         <div class="tabs-container">
@@ -305,34 +332,34 @@
         <!-- Followers Tab -->
         <div id="followers" class="tab-content active">
             <div class="package-grid">
-                <div class="plan-header">PLANO BÁSICO</div>
+                <div class="plan-header">Plano Básico</div>
                 <div class="card" onclick="selectPkg('100 Seguidores', 'R$2,50')">
                     <span class="qty">100</span>
-                    <span class="label">seguidores</span>
+                    <span class="label">Seguidores</span>
                     <span class="price">R$2,50</span>
                 </div>
                 <div class="card" onclick="selectPkg('500 Seguidores', 'R$7,00')">
                     <span class="qty">500</span>
-                    <span class="label">seguidores</span>
+                    <span class="label">Seguidores</span>
                     <span class="price">R$7,00</span>
                 </div>
 
-                <div class="plan-header">PLANO MÉDIO</div>
+                <div class="plan-header">Plano Médio</div>
                 <div class="card" onclick="selectPkg('1.000 Seguidores', 'R$8,00')">
                     <span class="qty">1.000</span>
-                    <span class="label">seguidores</span>
+                    <span class="label">Seguidores</span>
                     <span class="price">R$8,00</span>
                 </div>
                 <div class="card" onclick="selectPkg('2.000 Seguidores', 'R$16,00')">
                     <span class="qty">2.000</span>
-                    <span class="label">seguidores</span>
+                    <span class="label">Seguidores</span>
                     <span class="price">R$16,00</span>
                 </div>
 
-                <div class="plan-header">PLANO AVANÇADO</div>
+                <div class="plan-header">Plano Avançado</div>
                 <div class="card" onclick="selectPkg('5.000 Seguidores', 'R$37,00')" style="grid-column: span 2;">
                     <span class="qty">5.000</span>
-                    <span class="label">seguidores</span>
+                    <span class="label">Seguidores</span>
                     <span class="price">R$37,00</span>
                 </div>
             </div>
@@ -341,39 +368,39 @@
         <!-- Likes Tab -->
         <div id="likes" class="tab-content">
             <div class="package-grid">
-                <div class="plan-header">PLANO BÁSICO</div>
+                <div class="plan-header">Plano Básico</div>
                 <div class="card" onclick="selectPkg('100 Likes', 'R$2,00')">
                     <span class="qty">100</span>
-                    <span class="label">likes</span>
+                    <span class="label">Likes</span>
                     <span class="price">R$2,00</span>
                 </div>
                 <div class="card" onclick="selectPkg('300 Likes', 'R$3,50')">
                     <span class="qty">300</span>
-                    <span class="label">likes</span>
+                    <span class="label">Likes</span>
                     <span class="price">R$3,50</span>
                 </div>
 
-                <div class="plan-header">PLANO MÉDIO</div>
+                <div class="plan-header">Plano Médio</div>
                 <div class="card" onclick="selectPkg('500 Likes', 'R$5,00')">
                     <span class="qty">500</span>
-                    <span class="label">likes</span>
+                    <span class="label">Likes</span>
                     <span class="price">R$5,00</span>
                 </div>
                 <div class="card" onclick="selectPkg('1.000 Likes', 'R$8,00')">
                     <span class="qty">1.000</span>
-                    <span class="label">likes</span>
+                    <span class="label">Likes</span>
                     <span class="price">R$8,00</span>
                 </div>
 
-                <div class="plan-header">PLANO AVANÇADO</div>
+                <div class="plan-header">Plano Avançado</div>
                 <div class="card" onclick="selectPkg('5.000 Likes', 'R$20,00')">
                     <span class="qty">5.000</span>
-                    <span class="label">likes</span>
+                    <span class="label">Likes</span>
                     <span class="price">R$20,00</span>
                 </div>
                 <div class="card" onclick="selectPkg('10.000 Likes', 'R$35,00')">
                     <span class="qty">10.000</span>
-                    <span class="label">likes</span>
+                    <span class="label">Likes</span>
                     <span class="price">R$35,00</span>
                 </div>
             </div>
@@ -382,39 +409,39 @@
         <!-- Views Tab -->
         <div id="views" class="tab-content">
             <div class="package-grid">
-                <div class="plan-header">PLANO INICIAL</div>
+                <div class="plan-header">Plano Inicial</div>
                 <div class="card" onclick="selectPkg('1.000 Views', 'R$2,00')">
                     <span class="qty">1.000</span>
-                    <span class="label">views</span>
+                    <span class="label">Views</span>
                     <span class="price">R$2,00</span>
                 </div>
                 <div class="card" onclick="selectPkg('3.000 Views', 'R$4,00')">
                     <span class="qty">3.000</span>
-                    <span class="label">views</span>
+                    <span class="label">Views</span>
                     <span class="price">R$4,00</span>
                 </div>
 
-                <div class="plan-header">PLANO CRESCIMENTO</div>
+                <div class="plan-header">Plano Crescimento</div>
                 <div class="card" onclick="selectPkg('5.000 Views', 'R$6,00')">
                     <span class="qty">5.000</span>
-                    <span class="label">views</span>
+                    <span class="label">Views</span>
                     <span class="price">R$6,00</span>
                 </div>
                 <div class="card" onclick="selectPkg('10.000 Views', 'R$10,00')">
                     <span class="qty">10.000</span>
-                    <span class="label">views</span>
+                    <span class="label">Views</span>
                     <span class="price">R$10,00</span>
                 </div>
 
-                <div class="plan-header">PLANO DESTAQUE</div>
+                <div class="plan-header">Plano Destaque</div>
                 <div class="card" onclick="selectPkg('20.000 Views', 'R$18,00')">
                     <span class="qty">20.000</span>
-                    <span class="label">views</span>
+                    <span class="label">Views</span>
                     <span class="price">R$18,00</span>
                 </div>
                 <div class="card" onclick="selectPkg('50.000 Views', 'R$40,00')">
                     <span class="qty">50.000</span>
-                    <span class="label">views</span>
+                    <span class="label">Views</span>
                     <span class="price">R$40,00</span>
                 </div>
             </div>
@@ -422,17 +449,17 @@
 
         <!-- Order Form -->
         <div id="order-form-container">
-            <div class="form-raw">
-                <h2 id="summary-title">FECHAR PEDIDO</h2>
+            <div class="form-premium">
+                <h2 id="summary-title">Finalizar Pedido</h2>
                 <div class="input-group">
-                    <label>NOME COMPLETO</label>
-                    <input type="text" id="user-name" placeholder="DIGITE SEU NOME...">
+                    <label>Nome Completo</label>
+                    <input type="text" id="user-name" placeholder="Digite seu nome">
                 </div>
                 <div class="input-group">
-                    <label>@ DO SEU INSTAGRAM</label>
-                    <input type="text" id="user-handle" placeholder="@usuario">
+                    <label>Seu @ do Instagram</label>
+                    <input type="text" id="user-handle" placeholder="@seuusuario">
                 </div>
-                <button class="btn-whatsapp" onclick="sendToWhatsApp()">Chamar no WhatsApp</button>
+                <button class="btn-whatsapp" onclick="sendToWhatsApp()">Finalizar Pedido pelo WhatsApp</button>
             </div>
         </div>
 
@@ -471,7 +498,7 @@
             
             setTimeout(() => {
                 container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 100);
+            }, 200);
         }
 
         function sendToWhatsApp() {
@@ -479,7 +506,7 @@
             const handle = document.getElementById('user-handle').value.trim();
 
             if (!name || !handle) {
-                alert("OPERAÇÃO CANCELADA: PREENCHA TODOS OS CAMPOS!");
+                alert("Por favor, preencha todos os campos.");
                 return;
             }
 
